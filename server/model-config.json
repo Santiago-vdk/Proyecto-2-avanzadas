@@ -32,6 +32,18 @@
     "dataSource": "db",
     "public": false
   },
+  "producto": {
+    "dataSource": "primary",
+    "public": true
+  },
+  "libro": {
+    "dataSource": "primary",
+    "public": true
+  },
+  "electrodomestico": {
+    "dataSource": "primary",
+    "public": true
+  },
   "cliente": {
     "dataSource": "primary",
     "public": true

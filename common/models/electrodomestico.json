@@ -1,21 +1,21 @@
 {
-  "name": "cliente",
-  "plural": "clientes",
-  "base": "User",
+  "name": "electrodomestico",
+  "plural": "electrodomesticos",
+  "base": "producto",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
   "properties": {
-    "nombre": {
+    "color": {
       "type": "string",
       "required": true
     },
-    "apellidos": {
+    "voltage": {
       "type": "string",
       "required": true
     },
-    "lugar_residencia": {
+    "marca": {
       "type": "string",
       "required": true
     }

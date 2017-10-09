@@ -1,22 +1,26 @@
 {
-  "name": "cliente",
-  "plural": "clientes",
-  "base": "User",
+  "name": "libro",
+  "plural": "libros",
+  "base": "producto",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
   "properties": {
-    "nombre": {
+    "autor": {
       "type": "string",
       "required": true
     },
-    "apellidos": {
+    "fecha_publicacion": {
       "type": "string",
       "required": true
     },
-    "lugar_residencia": {
+    "editorial": {
       "type": "string",
+      "required": true
+    },
+    "numero_paginas": {
+      "type": "number",
       "required": true
     }
   },

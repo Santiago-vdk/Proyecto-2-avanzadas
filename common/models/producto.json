@@ -1,7 +1,7 @@
 {
-  "name": "cliente",
-  "plural": "clientes",
-  "base": "User",
+  "name": "producto",
+  "plural": "productos",
+  "base": "PersistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
@@ -11,12 +11,12 @@
       "type": "string",
       "required": true
     },
-    "apellidos": {
+    "descripcion": {
       "type": "string",
       "required": true
     },
-    "lugar_residencia": {
-      "type": "string",
+    "precio": {
+      "type": "number",
       "required": true
     }
   },

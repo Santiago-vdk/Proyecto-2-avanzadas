@@ -41,9 +41,9 @@
     }
   },
   "files": {
-    "loopback#static": [{
+    "loopback#static": {
       "params": "$!../client"
-    }]
+    }
   },
   "final": {
     "loopback#urlNotFound": {}
