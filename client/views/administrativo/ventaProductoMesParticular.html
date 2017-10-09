@@ -1,0 +1,33 @@
+<!-- consulta 4 -->
+
+<div class="container">
+  <h3>Monto de ventas para un producto específico para un mes en particular</h3>
+  <label>Mes:</label>
+  <input type="number" name="myDate" ng-model="params.mes" max="12" min="1">
+  <br />
+
+  <div class="form-group ">
+    <label class="control-label requiredField" for="name">
+   Articulo
+   <span class="asteriskField">
+    *
+   </span>
+  </label>
+
+    <!-- <input class="form-control" id="idCliente" ng-model="venta.idCliente" name="idCliente" type="number" ng-required="true" /> -->
+    <select id="idArticulo" name="idArticulo" ng-model="params.articulo">
+      <option ng-repeat="articulo in articulos" value="{{articulo.id}}">{{articulo.nombre}}</option>
+    </select>
+
+  </div>
+
+
+  <button class="btn btn-primary" ng-click="callVentasProductoMesParticular(params)">Consultar</button>
+
+  <hr />
+
+  <div class="jumbotron">
+    <h4 ng-if="venta_producto_mes">Monto de ventas del producto para el periodo: {{venta_producto_mes}}</h4>
+
+  </div>
+</div>

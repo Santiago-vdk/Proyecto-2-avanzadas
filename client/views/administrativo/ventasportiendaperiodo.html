@@ -1,0 +1,31 @@
+<!-- consulta 5 -->
+
+<div class="container">
+  <h3>Monto de ventas por tienda para un período específico</h3>
+  <label>Desde:</label>
+  <input type="date" name="myDate" ng-model="params.desde">
+  <br />
+  <label>Hasta:</label>
+  <input type="date" name="myDate" ng-model="params.hasta">
+
+  <div class="form-group ">
+    <label class="control-label requiredField" for="name">
+   Tienda
+   <span class="asteriskField">
+    *
+   </span>
+  </label>
+    <select id="idTienda" name="idTienda" ng-model="params.tienda">
+      <option ng-repeat="tienda in tiendasTotal" value="{{tienda.id}}">{{tienda.nombre}}</option>
+    </select>
+  </div>
+
+  <button class="btn btn-primary" ng-click="callVentasPorTiendaPeriodo(params)">Consultar</button>
+
+  <hr />
+
+  <div class="jumbotron">
+    <h4 ng-if="dinero_tienda_periodo">Monto de ventas por tienda en un período periodo: ¢{{dinero_tienda_periodo}}</h4>
+
+  </div>
+</div>

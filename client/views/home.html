@@ -1,0 +1,33 @@
+<!-- Page Content -->
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-3">
+      <h1 class="my-4">ElectroRopa</h1>
+      <div class="list-group">
+        <a href="#"  ng-click="irCrearClientes()" class="list-group-item">Crear Clientes</a>
+        <a href="#"  ng-click="irCrearEmpleados()" class="list-group-item">Crear Empleados</a>
+        <a href="#"  ng-click="irCrearTiendas()" class="list-group-item">Crear Tiendas</a>
+        <a href="#"  ng-click="irCrearArticulos()" class="list-group-item">Crear Articulos</a>
+      </div>
+
+    </div>
+    <!-- /.col-lg-3 -->
+
+    <div class="col-lg-9">
+
+
+      <div class="row"  ui-view="crud">
+
+
+      </div>
+      <!-- /.row -->
+
+    </div>
+    <!-- /.col-lg-9 -->
+
+  </div>
+  <!-- /.row -->
+
+</div>
+<!-- /.container -->
