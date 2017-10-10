@@ -4,33 +4,8 @@
     "connector": "memory"
   },
   "primary": {
-    "host": "ec2-52-91-3-111.compute-1.amazonaws.com",
-    "port": 27017,
-    "url": "",
-    "database": "database",
-    "password": "",
+    "url": "mongodb://ec2-52-91-3-111.compute-1.amazonaws.com,ec2-34-234-82-79.compute-1.amazonaws.com,ec2-54-175-19-180.compute-1.amazonaws.com/database?replicaSet=rs0",
     "name": "primary",
-    "user": "",
-    "connector": "mongodb"
-  },
-  "secondary-2": {
-    "host": "ec2-34-234-82-79.compute-1.amazonaws.com",
-    "port": 27017,
-    "url": "",
-    "database": "database",
-    "password": "",
-    "name": "secondary-2",
-    "user": "",
-    "connector": "mongodb"
-  },
-  "secondary-3": {
-    "host": "ec2-54-175-19-180.compute-1.amazonaws.com",
-    "port": 27017,
-    "url": "",
-    "database": "database",
-    "password": "",
-    "name": "secondary-3",
-    "user": "",
     "connector": "mongodb"
   }
 }
