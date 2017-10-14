@@ -1,8 +1,38 @@
-angular.module('ArticulosCtrl', []).controller('ArticulosController', ['$rootScope', '$scope', '$state', '$localStorage', 'toastr', 'Clientes', 'Articulos', function($rootScope, $scope, $state, $localStorage, toastr, Clientes, Articulos) {
+angular.module('ArticulosCtrl', []).controller('ArticulosController', ['$rootScope', '$scope', '$state', '$localStorage', '$sessionStorage', 'toastr', 'Clientes', 'Articulos', function($rootScope, $scope, $state, $localStorage, $sessionStorage, toastr, Clientes, Articulos) {
 
   $scope.dvds = [];
   $scope.electrodomesticos = [];
   $scope.libros = [];
+  $scope.carrito = [];
+
+  $scope.cargarCarrito = function() {
+    angular.forEach($sessionStorage.carrito, function(value) {
+      $scope.carrito.push(value);
+    });
+  }
+
+  $scope.agregarArticulo = function(articulo) {
+        articulo.cantidad = 1;
+    $sessionStorage.carrito.push(articulo);
+  }
+
+  $scope.realizarCompra = function(articulo) {
+
+    $sessionStorage.carrito.push(articulo);
+
+  }
+
+  $scope.actualizarCantidad = function(id, cantidad) {
+
+    $sessionStorage.carrito.map((articulo) => {
+
+      if(articulo.id == id){
+
+        articulo.cantidad = cantidad;
+      }
+
+    });
+  }
 
   $scope.getDvds = function() {
     Articulos.getArticulosDvds().then(function(response) {

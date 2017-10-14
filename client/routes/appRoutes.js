@@ -30,6 +30,10 @@ angular.module('appRoutes', []).config(['$stateProvider', '$locationProvider', '
     url: '/dvds',
     templateUrl: 'views/dvds.html',
     controller: 'ArticulosController'
+  }).state('carrito', {
+    url: '/carrito',
+    templateUrl: 'views/carrito.html',
+    controller: 'ArticulosController'
   });
 
   $stateProvider.state('administradores', {

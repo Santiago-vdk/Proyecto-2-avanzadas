@@ -1,6 +1,9 @@
-angular.module('MainCtrl', []).controller('MainController', ['$rootScope', '$scope', '$location', 'Articulos', 'Clientes', '$state', '$localStorage', 'toastr', function($rootScope, $scope, $location, Articulos, Clientes, $state, $localStorage, toastr) {
+angular.module('MainCtrl', []).controller('MainController', ['$rootScope', '$scope', '$location', 'Articulos', 'Clientes', '$state', '$localStorage', '$sessionStorage', 'toastr', function($rootScope, $scope, $location, Articulos, Clientes, $state, $localStorage, $sessionStorage, toastr) {
 
   $scope.articulos = [];
+  if (!$sessionStorage.carrito) {
+    $sessionStorage.carrito = [];
+  }
 
   // $scope.irRegister = function() {
   //   $state.go('register');
