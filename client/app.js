@@ -7,22 +7,15 @@ var app = angular.module('app', [
   // Controladores
   'MainCtrl',
   'AdministradoresCtrl',
-  'VendedoresCtrl',
-  'CRUDTiendasCtrl',
-  'CRUDClientesCtrl',
-  'CRUDArticulosCtrl',
-  'CRUDEmpleadosCtrl'
+  'AccessCtrl',
+  'ArticulosCtrl',
 
   // Servicios
-
   , 'VentasService'
   , 'AdministradorService'
   , 'ArticulosService'
   , 'ClientesService'
-  , 'EmpleadosService'
-  , 'TiendasService'
-  , 'SucursalesService'
-  , 'PuestosService'
+
 
 ]);
 

@@ -14,22 +14,29 @@
     ]
   },
   "AccessToken": {
-    "dataSource": "db",
-    "public": false
+    "dataSource": "primary",
+    "public": false,
+    "relations": {
+      "user": {
+        "type": "belongsTo",
+        "model": "cliente",
+        "foreignKey": "userId"
+      }
+    }
   },
   "ACL": {
-    "dataSource": "db",
+    "dataSource": "primary",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "db",
+    "dataSource": "primary",
     "public": false,
     "options": {
       "strictObjectIDCoercion": true
     }
   },
   "Role": {
-    "dataSource": "db",
+    "dataSource": "primary",
     "public": false
   },
   "producto": {

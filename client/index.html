@@ -25,25 +25,17 @@
   <link rel="stylesheet" href="https://unpkg.com/angular-toastr/dist/angular-toastr.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.11/ngStorage.min.js"></script>
 
-
   <script src="/app.js"></script>
   <script src="/routes/appRoutes.js"></script>
   <script src="/controllers/MainCtrl.js"></script>
   <script src="/controllers/AdministradoresCtrl.js"></script>
-  <script src="/controllers/VendedoresCtrl.js"></script>
-  <script src="/controllers/crud/CRUDTiendasCtrl.js"></script>
-  <script src="/controllers/crud/CRUDEmpleadosCtrl.js"></script>
-  <script src="/controllers/crud/CRUDClientesCtrl.js"></script>
-  <script src="/controllers/crud/CRUDArticulosCtrl.js"></script>
+  <script src="/controllers/AccessCtrl.js"></script>
+  <script src="/controllers/ArticulosCtrl.js"></script>
 
   <script src="/services/VentasService.js"></script>
   <script src="/services/AdministradorService.js"></script>
   <script src="/services/ArticulosService.js"></script>
   <script src="/services/ClientesService.js"></script>
-  <script src="/services/EmpleadosService.js"></script>
-  <script src="/services/TiendasService.js"></script>
-  <script src="/services/SucursalesService.js"></script>
-  <script src="/services/PuestosService.js"></script>
 </head>
 
 <body ng-controller="MainController">
@@ -57,23 +49,31 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
+          <li ng-if="loggedIn == true" class="nav-item">
+            <a class="nav-link" href="#" style="color:white" >Bienvenido, {{nombre}}</a>
+          </li>
+
           <li class="nav-item">
             <a class="nav-link" href="/">Home
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/vendedores">Vendedores</a>
+
+          <li ng-if="loggedIn == true" class="nav-item">
+            <a class="nav-link" style="color:yellow" href="/carrito">Carrito de Compras</a>
           </li>
+
           <li class="nav-item">
-            <a class="nav-link" href="/administradores">Reportes</a>
+            <a class="nav-link" href="/administradores">Administrador</a>
           </li>
-          <li class="nav-item">
-            <form ng-init="setOrigin()" name="myForm" style="color:white;">
-              <label>Ubicacion Actual:</label>
-              <input type="radio" ng-model="radio" ng-change="updateOrigin(radio)" value="1"> Heredia
-              <input type="radio" ng-model="radio" ng-change="updateOrigin(radio)" value="2"> San Jose
-              <input type="radio" ng-model="radio" ng-change="updateOrigin(radio)" value="3"> Alajuela
-            </form>
+          <li ng-if="loggedIn == false" class="nav-item">
+            <a class="nav-link" href="/register">Registrar</a>
+          </li>
+          <li ng-if="loggedIn == false" class="nav-item">
+            <a class="nav-link" href="/login">Iniciar Sesión</a>
+          </li>
+
+          <li ng-if="loggedIn == true" class="nav-item">
+            <a class="nav-link" ng-click="logout()" href="#">Cerrar Sesion</a>
           </li>
         </ul>
       </div>

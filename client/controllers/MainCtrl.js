@@ -1,55 +1,40 @@
-angular.module('MainCtrl', []).controller('MainController', ['$rootScope', '$scope', '$location', 'Articulos', 'Clientes', 'Empleados', 'Tiendas', '$state', '$localStorage', function($rootScope, $scope, $location, Articulos, Clientes, Empleados, Tiendas, $state, $localStorage) {
+angular.module('MainCtrl', []).controller('MainController', ['$rootScope', '$scope', '$location', 'Articulos', 'Clientes', '$state', '$localStorage', 'toastr', function($rootScope, $scope, $location, Articulos, Clientes, $state, $localStorage, toastr) {
 
+  $scope.articulos = [];
 
-  $scope.currentPath = $location.path();
+  // $scope.irRegister = function() {
+  //   $state.go('register');
+  // }
+  $scope.logout = function() {
+    Clientes.logout().then(function(response) {}).catch(function(err) {
+      alert("Error iniciando sesion");
+    });
+    $scope.loggedIn = false;
+    $localStorage.$reset();
+  }
+  $scope.loggedIn = false;
+  $scope.nombre = "";
+  if ($localStorage.accessToken) {
+    Clientes.getCliente().then(function(response) {
 
-  $scope.updateOrigin = function(origin) {
-    console.log("Cambiando ubicacion a", origin);
-    $localStorage.origin = parseInt(origin);
-    $scope.title = "HELLEDIA"
-    if($localStorage.origin === 1){
-      $scope.title = "HELLEDIA";
-    }
-    else if($localStorage.origin === 2){
-      $scope.title = "JOSESAN";
-    }
-    else if($localStorage.origin === 3){
-      $scope.title = "ALAJUEX";
-    }
+      $scope.loggedIn = true;
+      $scope.nombre = response.data.nombre;
+    }).catch(function(err) {
+      alert("Error iniciando sesion");
+    });
+  } else {
+    $location.path('/login');
   }
 
-  $scope.setOrigin = function(origin) {
-    if($localStorage.origin === 1){
-      $scope.radio = "1";
-      $scope.title = "HELLEDIA"
-    }
-    else if($localStorage.origin === 2){
-      $scope.radio = "2";
-      $scope.title = "JOSESAN"
-    }
-    else if($localStorage.origin === 3){
-      $scope.radio = "3";
-      $scope.title = "ALAJUEX"
-    }
-  }
 
-  if (!$localStorage.origin) {
+  Articulos.getArticulos().then(function(response) {
+    angular.forEach(response.data, function(value) {
+      $scope.articulos.push(value);
+    });
 
-      $localStorage.origin = 1;
+  }).catch(function(err) {
+    alert("Error iniciando sesion");
+  });
 
-  }
-
-  $scope.irCrearClientes = function() {
-    $state.go('crearclientes');
-  }
-  $scope.irCrearEmpleados = function() {
-    $state.go('crearempleados');
-  }
-  $scope.irCrearTiendas = function() {
-    $state.go('creartiendas');
-  }
-  $scope.irCrearArticulos = function() {
-    $state.go('creararticulo');
-  }
 
 }]);
