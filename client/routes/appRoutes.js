@@ -41,11 +41,43 @@ angular.module('appRoutes', []).config(['$stateProvider', '$locationProvider', '
     templateUrl: 'views/administradores.html',
     controller: 'AdministradoresController'
 
-  }).state('ventasportiendaperiodo', {
+  }).state('modificarProductoCatalogo', {
     parent: 'administradores',
     views: {
       'consultas@administradores': {
-        templateUrl: 'views/administrativo/ventasportiendaperiodo.html',
+        templateUrl: 'views/administrativo/modificarProductoCatalogo.html',
+        controller: 'AdministradoresController'
+      }
+    }
+  }).state('promedioProductosClientes', {
+    parent: 'administradores',
+    views: {
+      'consultas@administradores': {
+        templateUrl: 'views/administrativo/promedioProductosClientes.html',
+        controller: 'AdministradoresController'
+      }
+    }
+  }).state('rangoProductosCompradosPorCliente', {
+    parent: 'administradores',
+    views: {
+      'consultas@administradores': {
+        templateUrl: 'views/administrativo/rangoProductosCompradosPorCliente.html',
+        controller: 'AdministradoresController'
+      }
+    }
+  }).state('topProductos', {
+    parent: 'administradores',
+    views: {
+      'consultas@administradores': {
+        templateUrl: 'views/administrativo/topProductos.html',
+        controller: 'AdministradoresController'
+      }
+    }
+  }).state('agregarProducto', {
+    parent: 'administradores',
+    views: {
+      'consultas@administradores': {
+        templateUrl: 'views/administrativo/agregarProducto.html',
         controller: 'AdministradoresController'
       }
     }

@@ -12,23 +12,33 @@ angular.module('ArticulosCtrl', []).controller('ArticulosController', ['$rootSco
   }
 
   $scope.agregarArticulo = function(articulo) {
-        articulo.cantidad = 1;
+    articulo.cantidad = 1;
     $sessionStorage.carrito.push(articulo);
   }
 
   $scope.realizarCompra = function(articulo) {
 
-    $sessionStorage.carrito.push(articulo);
+    alert("comprar");
 
   }
 
-  $scope.actualizarCantidad = function(id, cantidad) {
+  $scope.eliminarArticulo = function(articulo) {
+    var i = 0;
+    $sessionStorage.carrito.map((art) => {
+      if (art.id == articulo.id) {
+        $sessionStorage.carrito.splice(i, 1);
+        $scope.carrito = $sessionStorage.carrito;
+      }
+      i += 1;
+    });
 
-    $sessionStorage.carrito.map((articulo) => {
+  }
 
-      if(articulo.id == id){
+  $scope.actualizarCantidad = function(articulo) {
 
-        articulo.cantidad = cantidad;
+    $sessionStorage.carrito.map((art) => {
+      if (art.id == articulo.id) {
+        art.cantidad = articulo.cantidad;
       }
 
     });

@@ -39,5 +39,11 @@ angular.module('MainCtrl', []).controller('MainController', ['$rootScope', '$sco
     alert("Error iniciando sesion");
   });
 
+  $scope.agregarArticuloM = function(articulo) {
+    articulo.cantidad = 1;
+    $sessionStorage.carrito.push(articulo);
+    
+  }
+
 
 }]);

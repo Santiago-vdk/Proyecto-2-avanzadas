@@ -1,0 +1,8 @@
+<h1>Agregar producto al catalogo</h1>
+
+<form ng-model="articulo">
+  Nombre: <input ng-model="articulo.nombre" type="text" name="fname"><br>
+  Descripcion: <input ng-model="articulo.descripcion" type="text" name="lname"><br>
+  Precio: <input ng-model="articulo.precio" type="text" name="lname"><br>
+  <button class="btn btn-success" ng-click="agregarArticulo(articulo)">Agregar</button>
+</form>
