@@ -1,0 +1,13 @@
+{
+  "name": "dvds",
+  "base": "producto",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {},
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

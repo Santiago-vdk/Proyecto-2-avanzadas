@@ -16,14 +16,14 @@ angular.module('ArticulosService', []).factory('Articulos', ['$rootScope', '$htt
       });
     },
     getArticulosLibros: function() {
-      return $http.get('/api/productos').then(function(data) {
+      return $http.get('/api/libros').then(function(data) {
         return data;
       }).catch(function(err) {
         throw err;
       });
     },
     getArticulosElectrodomesticos: function() {
-      return $http.get('/api/productos').then(function(data) {
+      return $http.get('/api/electrodomesticos').then(function(data) {
         return data;
       }).catch(function(err) {
         throw err;

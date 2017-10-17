@@ -54,5 +54,9 @@
   "cliente": {
     "dataSource": "primary",
     "public": true
+  },
+  "dvds": {
+    "dataSource": "primary",
+    "public": true
   }
 }
