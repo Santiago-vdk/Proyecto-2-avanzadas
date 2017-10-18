@@ -81,6 +81,22 @@ angular.module('appRoutes', []).config(['$stateProvider', '$locationProvider', '
         controller: 'AdministradoresController'
       }
     }
+  }).state('agregarProductoDvd', {
+    parent: 'administradores',
+    views: {
+      'consultas@administradores': {
+        templateUrl: 'views/administrativo/agregarProductoDvd.html',
+        controller: 'AdministradoresController'
+      }
+    }
+  }).state('agregarProductoElectrodomestico', {
+    parent: 'administradores',
+    views: {
+      'consultas@administradores': {
+        templateUrl: 'views/administrativo/agregarProductoElectrodomestico.html',
+        controller: 'AdministradoresController'
+      }
+    }
   });
 
   $urlRouterProvider.otherwise("/");

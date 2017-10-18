@@ -22,6 +22,12 @@ angular.module('AdministradoresCtrl', []).controller('AdministradoresController'
   $scope.agregarProducto = function() {
     $state.go('agregarProducto');
   }
+  $scope.agregarProductoDvd = function() {
+    $state.go('agregarProductoDvd');
+  }
+  $scope.agregarProductoElectrodomestico = function() {
+    $state.go('agregarProductoElectrodomestico');
+  }
 
   $scope.cargarCatalogo = function() {
     Articulos.getArticulos().then(function(response) {
@@ -82,6 +88,25 @@ angular.module('AdministradoresCtrl', []).controller('AdministradoresController'
   var articulos = [];
   var cantidades = [];
 
+  var maximo = 0;
+  var minimo = 0;
+
+  $scope.consultarRango = function() {
+
+    Articulos.traerOrdenes(idUsuario).then(function(response) {
+      var suma = 0;
+      $scope.result = 0;
+      angular.forEach(response.data, function(orden) {
+        angular.forEach(orden.productos, function(producto) {
+
+        });
+      });
+    }).catch(function(err) {
+      alert("Error agregando");
+    });
+
+  }
+
   $scope.consultarTop = function() {
     Articulos.traerOrdenesTodas().then(function(response) {
 
@@ -108,15 +133,27 @@ angular.module('AdministradoresCtrl', []).controller('AdministradoresController'
   $scope.result = [];
   $scope.calcular = function() {
 
-    angular.forEach(cantidades, function(orden) {
+
       var elemento = Math.max(cantidades);
       var posicion = cantidades.indexOf(elemento);
       cantidades.splice(posicion, 1);
       var nombre = articulos.splice(posicion, 1);
       $scope.result.push(nombre);
 
+      elemento = Math.max(cantidades);
+      posicion = cantidades.indexOf(elemento);
+      cantidades.splice(posicion, 1);
+      nombre = articulos.splice(posicion, 1);
+      $scope.result.push(nombre);
 
-    });
+      elemento = Math.max(cantidades);
+      posicion = cantidades.indexOf(elemento);
+      cantidades.splice(posicion, 1);
+      nombre = articulos.splice(posicion, 1);
+      $scope.result.push(nombre);
+
+
+
 
 
   }
