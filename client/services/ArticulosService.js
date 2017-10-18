@@ -21,17 +21,25 @@ angular.module('ArticulosService', []).factory('Articulos', ['$rootScope', '$htt
       });
     },
     getArticulosLibros: function() {
+      var params = {
+        "where":{"tipo": "libro"}
+
+      }
 
 
-
-      return $http.get('/api/libros').then(function(data) {
+      return $http.get('/api/productos?filter=' + JSON.stringify(params)).then(function(data) {
         return data;
       }).catch(function(err) {
         throw err;
       });
     },
     getArticulosElectrodomesticos: function() {
-      return $http.get('/api/electrodomesticos').then(function(data) {
+      var params = {
+        "where":{"tipo": "electrodomestico"}
+
+      }
+
+      return $http.get('/api/productos?filter=' + JSON.stringify(params)).then(function(data) {
         return data;
       }).catch(function(err) {
         throw err;

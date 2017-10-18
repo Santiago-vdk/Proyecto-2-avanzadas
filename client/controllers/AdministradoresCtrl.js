@@ -138,22 +138,22 @@ angular.module('AdministradoresCtrl', []).controller('AdministradoresController'
       var posicion = cantidades.indexOf(elemento);
       cantidades.splice(posicion, 1);
       var nombre = articulos.splice(posicion, 1);
-      $scope.result.push(nombre);
+      $scope.result.push(nombre[0]);
 
       elemento = Math.max(cantidades);
       posicion = cantidades.indexOf(elemento);
       cantidades.splice(posicion, 1);
       nombre = articulos.splice(posicion, 1);
-      $scope.result.push(nombre);
+      $scope.result.push(nombre[0]);
 
       elemento = Math.max(cantidades);
       posicion = cantidades.indexOf(elemento);
       cantidades.splice(posicion, 1);
       nombre = articulos.splice(posicion, 1);
-      $scope.result.push(nombre);
+      $scope.result.push(nombre[0]);
 
 
-
+console.log($scope.result);
 
 
   }
