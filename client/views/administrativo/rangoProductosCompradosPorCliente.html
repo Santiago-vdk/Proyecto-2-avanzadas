@@ -1,1 +1,13 @@
 <h1>Rango de productos para cada cliente</h1>
+
+
+<div ng-init="traerUsuarios()">
+
+<div class="row">
+  <div class="col-md-12" ng-repeat="cliente in clientes">
+      <h4>Nombre: {{cliente.nombre}} {{result}}</h4>
+      <button class="btn btn-primary" ng-click="consultarRango(cliente.username)">Consultar</button>
+  </div>
+</div>
+
+</div>

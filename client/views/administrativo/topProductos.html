@@ -1,1 +1,9 @@
 <h1>Top 3 productos</h1>
+
+
+<div ng-init="consultarTop()">
+
+  <button ng-click="calcular()">Consultar</button>
+
+  <h1 ng-repeat="res in result">{{res}}</h1>
+</div>

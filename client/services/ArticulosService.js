@@ -1,4 +1,4 @@
-angular.module('ArticulosService', []).factory('Articulos', ['$rootScope', '$http','$localStorage', function($rootScope, $http, $localStorage) {
+angular.module('ArticulosService', []).factory('Articulos', ['$rootScope', '$http', '$localStorage', function($rootScope, $http, $localStorage) {
 
   return {
     getArticulos: function() {
@@ -9,13 +9,21 @@ angular.module('ArticulosService', []).factory('Articulos', ['$rootScope', '$htt
       });
     },
     getArticulosDvds: function() {
-      return $http.get('/api/productos').then(function(data) {
+      var params = {
+        "where":{"tipo": "dvd"}
+
+      }
+
+      return $http.get('/api/productos?filter=' + JSON.stringify(params)).then(function(data) {
         return data;
       }).catch(function(err) {
         throw err;
       });
     },
     getArticulosLibros: function() {
+
+
+
       return $http.get('/api/libros').then(function(data) {
         return data;
       }).catch(function(err) {
@@ -45,6 +53,25 @@ angular.module('ArticulosService', []).factory('Articulos', ['$rootScope', '$htt
     },
     agregarArticulo: function(articulo) {
       return $http.post('/api/productos/', articulo).then(function(data) {
+        return data;
+      }).catch(function(err) {
+        throw err;
+      });
+    },
+    traerOrdenes: function(idUsuario) {
+      // Ordenes para un cliente con id
+
+      var query = {
+        "where":{"cliente": idUsuario}
+      }
+      return $http.get('/api/ordenes?filter=' + JSON.stringify(query)).then(function(data) {
+        return data;
+      }).catch(function(err) {
+        throw err;
+      });
+    },
+    traerOrdenesTodas: function() {
+      return $http.get('/api/ordenes').then(function(data) {
         return data;
       }).catch(function(err) {
         throw err;

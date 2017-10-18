@@ -1,11 +1,16 @@
 {
-  "name": "dvds",
-  "base": "producto",
+  "name": "test",
+  "base": "PersistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
-  "properties": {},
+  "properties": {
+    "test": {
+      "type": "ObjectId",
+      "required": true
+    }
+  },
   "validations": [],
   "relations": {},
   "acls": [],

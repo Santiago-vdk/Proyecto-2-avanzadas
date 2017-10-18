@@ -1,6 +1,7 @@
 angular.module('AdministradoresCtrl', []).controller('AdministradoresController', ['$rootScope', '$scope', '$state', 'Administrador', 'Clientes', 'Articulos', '$localStorage', '$sessionStorage', 'toastr', function($rootScope, $scope, $state, Administrador, Clientes, Articulos, $localStorage, $sessionStorage, toastr) {
   $scope.params = {};
   $scope.catalogo = [];
+  $scope.clientes = [];
 
   // Para todos
   $scope.modificarProductoCatalogo = function() {
@@ -62,5 +63,91 @@ angular.module('AdministradoresCtrl', []).controller('AdministradoresController'
       alert("Error agregando");
     });
   }
+
+
+  $scope.traerUsuarios = function() {
+
+    Clientes.getClientes().then(function(response) {
+      angular.forEach(response.data, function(value) {
+        $scope.clientes.push(value)
+      });
+
+
+    }).catch(function(err) {
+      alert("Error agregando");
+    });
+  }
+  $scope.result = 0;
+
+  var articulos = [];
+  var cantidades = [];
+
+  $scope.consultarTop = function() {
+    Articulos.traerOrdenesTodas().then(function(response) {
+
+      angular.forEach(response.data, function(orden) {
+
+        angular.forEach(orden.productos, function(producto) {
+
+          if (articulos.indexOf(producto.nombre) === -1) {
+
+            articulos.push(producto.nombre);
+            cantidades.push(producto.cantidad);
+          } else {
+            cantidades[articulos.indexOf(producto.nombre)] = cantidades[articulos.indexOf(producto.nombre)] + producto.cantidad;
+          }
+
+        });
+      });
+
+    }).catch(function(err) {
+      alert("Error agregando");
+    });
+
+  }
+  $scope.result = [];
+  $scope.calcular = function() {
+
+    angular.forEach(cantidades, function(orden) {
+      var elemento = Math.max(cantidades);
+      var posicion = cantidades.indexOf(elemento);
+      cantidades.splice(posicion, 1);
+      var nombre = articulos.splice(posicion, 1);
+      $scope.result.push(nombre);
+
+
+    });
+
+
+  }
+
+  $scope.consultarUsuario = function(idUsuario) {
+    Articulos.traerOrdenes(idUsuario).then(function(response) {
+      var suma = 0;
+      $scope.result = 0;
+      angular.forEach(response.data, function(orden) {
+        angular.forEach(orden.productos, function(producto) {
+          suma = suma + producto.cantidad
+
+          $scope.result = suma / response.data.length;
+        });
+      });
+    }).catch(function(err) {
+      alert("Error agregando");
+    });
+  }
+  /*
+    $scope.promedioProductos = function() {
+      Articulos.traerOrdenes(articulo).then(function(response) {
+        // Procesar
+
+
+
+
+      }).catch(function(err) {
+        alert("Error agregando");
+      });
+    }
+    */
 
 }]);

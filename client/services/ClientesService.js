@@ -5,6 +5,12 @@ angular.module('ClientesService', []).factory('Clientes', ['$rootScope', '$http'
       return $http.post('/api/clientes/login', data).then(function(data) {
         $localStorage.accessToken = data.data.id;
         $localStorage.userId = data.data.userId;
+
+
+
+        
+
+
         return data;
       }).catch(function(err) {
         throw err;
@@ -26,6 +32,13 @@ angular.module('ClientesService', []).factory('Clientes', ['$rootScope', '$http'
     },
     getCliente: function() {
       return $http.get('/api/clientes/' + $localStorage.userId  + '?access_token=' + $localStorage.accessToken).then(function(data) {
+        return data;
+      }).catch(function(err) {
+        throw err;
+      });
+    },
+    getClientes: function() {
+      return $http.get('/api/clientes').then(function(data) {
         return data;
       }).catch(function(err) {
         throw err;

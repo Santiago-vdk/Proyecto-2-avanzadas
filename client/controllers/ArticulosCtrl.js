@@ -1,4 +1,4 @@
-angular.module('ArticulosCtrl', []).controller('ArticulosController', ['$rootScope', '$scope', '$state', '$localStorage', '$sessionStorage', 'toastr', 'Clientes', 'Articulos', function($rootScope, $scope, $state, $localStorage, $sessionStorage, toastr, Clientes, Articulos) {
+angular.module('ArticulosCtrl', []).controller('ArticulosController', ['$rootScope', '$scope', '$state', '$localStorage', '$sessionStorage', 'toastr', 'Clientes', 'Articulos', 'Ventas', function($rootScope, $scope, $state, $localStorage, $sessionStorage, toastr, Clientes, Articulos, Ventas) {
 
   $scope.dvds = [];
   $scope.electrodomesticos = [];
@@ -16,9 +16,21 @@ angular.module('ArticulosCtrl', []).controller('ArticulosController', ['$rootSco
     $sessionStorage.carrito.push(articulo);
   }
 
-  $scope.realizarCompra = function(articulo) {
+  $scope.realizarCompra = function() {
 
-    alert("comprar");
+    var orden = {
+      "cliente": $localStorage.username,
+      "productos": $sessionStorage.carrito
+    }
+    console.log(orden);
+
+    Ventas.crearVenta(orden).then(function(response) {
+
+      $sessionStorage.carrito = []
+
+    }).catch(function(err) {
+      toastr.error('Hubo un error mientras se solicitaban los articulos', 'Error');
+    });
 
   }
 

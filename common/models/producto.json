@@ -11,6 +11,10 @@
       "type": "string",
       "required": true
     },
+    "tipo": {
+      "type": "string",
+      "required": true
+    },
     "descripcion": {
       "type": "string",
       "required": true
@@ -18,29 +22,31 @@
     "precio": {
       "type": "number",
       "required": true
+    },
+    "autor": {
+      "type": "string"
+    },
+    "fecha_publicacion": {
+      "type": "string"
+    },
+    "editorial": {
+      "type": "string"
+    },
+    "numero_paginas": {
+      "type": "number"
+    },
+    "color": {
+      "type": "string"
+    },
+    "voltage": {
+      "type": "string"
+    },
+    "marca": {
+      "type": "string"
     }
   },
   "validations": [],
   "relations": {},
-  "acls": [
-    {
-      "accessType": "*",
-      "principalType": "ROLE",
-      "principalId": "$everyone",
-      "permission": "ALLOW"
-    },
-    {
-      "accessType": "*",
-      "principalType": "ROLE",
-      "principalId": "$everyone",
-      "permission": "ALLOW"
-    },
-    {
-      "accessType": "*",
-      "principalType": "ROLE",
-      "principalId": "$everyone",
-      "permission": "ALLOW"
-    }
-  ],
+  "acls": [],
   "methods": {}
 }

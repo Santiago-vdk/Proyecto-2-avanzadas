@@ -39,24 +39,20 @@
     "dataSource": "primary",
     "public": false
   },
-  "producto": {
-    "dataSource": "primary",
-    "public": true
-  },
-  "libro": {
-    "dataSource": "primary",
-    "public": true
-  },
-  "electrodomestico": {
-    "dataSource": "primary",
-    "public": true
-  },
   "cliente": {
     "dataSource": "primary",
     "public": true
   },
-  "dvds": {
+  "producto": {
     "dataSource": "primary",
     "public": true
+  },
+  "orden": {
+    "dataSource": "primary",
+    "public": true
+  },
+  "test": {
+    "dataSource": "primary",
+    "public": false
   }
 }
