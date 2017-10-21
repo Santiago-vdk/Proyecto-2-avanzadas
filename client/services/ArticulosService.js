@@ -76,6 +76,7 @@ angular.module('ArticulosService', []).factory('Articulos', ['$rootScope', '$htt
         return data;
       }).catch(function(err) {
         throw err;
+
       });
     },
     traerOrdenesTodas: function() {

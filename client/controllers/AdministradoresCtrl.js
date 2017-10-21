@@ -88,24 +88,39 @@ angular.module('AdministradoresCtrl', []).controller('AdministradoresController'
   var articulos = [];
   var cantidades = [];
 
-  var maximo = 0;
-  var minimo = 0;
+  $scope.maximo = 0;
+  $scope.minimo = 0;
 
-  $scope.consultarRango = function() {
 
+  var rango_cantidades = [];
+
+  $scope.calcularRango = function(idUsuario) {
+    rango_cantidades = [];
     Articulos.traerOrdenes(idUsuario).then(function(response) {
-      var suma = 0;
-      $scope.result = 0;
+
       angular.forEach(response.data, function(orden) {
         angular.forEach(orden.productos, function(producto) {
-
+          rango_cantidades.push(parseInt(producto.cantidad));
         });
+
       });
     }).catch(function(err) {
-      alert("Error agregando");
+      console.log(err);
     });
-
   }
+
+
+
+
+$scope.consultarRango = function() {
+
+  $scope.maximo = Math.max.apply(Math,rango_cantidades);
+  $scope.minimo = Math.min.apply(Math,rango_cantidades);
+
+
+}
+
+
 
   $scope.consultarTop = function() {
     Articulos.traerOrdenesTodas().then(function(response) {
@@ -134,27 +149,23 @@ angular.module('AdministradoresCtrl', []).controller('AdministradoresController'
   $scope.calcular = function() {
 
 
-      var elemento = Math.max(cantidades);
-      var posicion = cantidades.indexOf(elemento);
-      cantidades.splice(posicion, 1);
-      var nombre = articulos.splice(posicion, 1);
-      $scope.result.push(nombre[0]);
+    var elemento = Math.max(cantidades);
+    var posicion = cantidades.indexOf(elemento);
+    cantidades.splice(posicion, 1);
+    var nombre = articulos.splice(posicion, 1);
+    $scope.result.push(nombre[0]);
 
-      elemento = Math.max(cantidades);
-      posicion = cantidades.indexOf(elemento);
-      cantidades.splice(posicion, 1);
-      nombre = articulos.splice(posicion, 1);
-      $scope.result.push(nombre[0]);
+    elemento = Math.max(cantidades);
+    posicion = cantidades.indexOf(elemento);
+    cantidades.splice(posicion, 1);
+    nombre = articulos.splice(posicion, 1);
+    $scope.result.push(nombre[0]);
 
-      elemento = Math.max(cantidades);
-      posicion = cantidades.indexOf(elemento);
-      cantidades.splice(posicion, 1);
-      nombre = articulos.splice(posicion, 1);
-      $scope.result.push(nombre[0]);
-
-
-console.log($scope.result);
-
+    elemento = Math.max(cantidades);
+    posicion = cantidades.indexOf(elemento);
+    cantidades.splice(posicion, 1);
+    nombre = articulos.splice(posicion, 1);
+    $scope.result.push(nombre[0]);
 
   }
 
