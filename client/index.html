@@ -62,7 +62,7 @@
             <a class="nav-link" style="color:yellow" href="/carrito">Carrito de Compras</a>
           </li>
 
-          <li class="nav-item">
+          <li ng-if="isAdmin() && loggedIn == true" class="nav-item">
             <a class="nav-link" href="/administradores">Administrador</a>
           </li>
           <li ng-if="loggedIn == false" class="nav-item">

@@ -42,7 +42,16 @@ angular.module('MainCtrl', []).controller('MainController', ['$rootScope', '$sco
   $scope.agregarArticuloM = function(articulo) {
     articulo.cantidad = 1;
     $sessionStorage.carrito.push(articulo);
-    
+
+  }
+
+  $scope.isAdmin = function(){
+
+    if($localStorage.username.localeCompare("admin") === 0){
+      return true;
+    } else {
+      return false;
+    }
   }
 
 
